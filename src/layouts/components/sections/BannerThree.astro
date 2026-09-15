@@ -3,7 +3,6 @@ import { z } from "astro/zod";
 import type { Section } from "@/types";
 import Button from "@/components/Button.astro";
 import { getEntryCTM } from "@/lib/contentParser.astro";
-import { markdownify } from "@/lib/utils/textConverter";
 import overrideObjects from "@/lib/utils/overrideObjects.ts";
 import OptimizedImage from "../utilities/OptimizedImage.astro";
 import type { bannerAgencySectionSchema } from "@/sections.schema";
@@ -64,19 +63,19 @@ const jsonSlides = JSON.stringify(slides);
     ))}
   </div>
 
-  <div class="container relative z-10 flex min-h-[620px] items-center py-24 max-lg:min-h-[600px] max-lg:py-20">
+  <div class="container relative z-10 flex min-h-[620px] items-center py-20 max-lg:min-h-[600px] max-lg:py-16 md:py-24">
     <div class="max-w-3xl text-left">
-      <div class="banner-three-copy relative min-h-[300px] md:min-h-[330px]">
+      <div class="banner-three-copy relative min-h-[380px] md:min-h-[350px]">
         {slides.map((slide, index) => (
           <div class:list={["banner-three-copy-slide absolute inset-0 flex flex-col justify-center", index === 0 && "is-active"]} data-hero-copy={index}>
-            <div class="text-primary inline-flex items-center gap-3 text-xs font-bold tracking-[0.24em] uppercase">
-              <span class="h-px w-10 bg-primary"></span>
+            <div class="text-primary inline-flex min-h-5 items-center gap-3 text-[11px] font-bold tracking-[0.22em] uppercase md:text-xs">
+              <span class="h-px w-10 shrink-0 bg-primary"></span>
               <span>{slide.eyebrow}</span>
             </div>
-            <h1 class="mt-5 text-display-5 leading-tight text-white md:text-display-4 lg:text-display-3 xl:text-display-2" set:html={markdownify(slide.title)}></h1>
-            <p class="mt-5 max-w-2xl text-base leading-7 text-white/90 md:text-lg md:leading-8" set:html={markdownify(slide.description)}></p>
+            <h1 class="mt-5 min-h-[2.15em] max-w-3xl text-display-5 leading-[1.04] font-semibold tracking-tight text-white md:text-display-4 lg:text-display-3 xl:text-display-2">{slide.title}</h1>
+            <p class="mt-5 min-h-[5.25rem] max-w-2xl text-base leading-7 text-white/90 md:text-lg md:leading-8">{slide.description}</p>
             {buttons?.length && (
-              <div class="banner-three-actions mt-8 flex flex-wrap items-center justify-start gap-3 md:mt-10 md:gap-4">
+              <div class="banner-three-actions mt-8 flex min-h-12 flex-wrap items-center justify-start gap-3 md:mt-10 md:gap-4">
                 {buttons.map((button) => <Button {...button} />)}
               </div>
             )}
@@ -84,7 +83,7 @@ const jsonSlides = JSON.stringify(slides);
         ))}
       </div>
 
-      <div class="mt-7 flex items-center gap-4 md:mt-9">
+      <div class="mt-5 flex items-center gap-4 md:mt-7">
         <div class="flex items-center gap-2" aria-label="Hero slides">
           {slides.map((_, index) => (
             <button
@@ -96,7 +95,7 @@ const jsonSlides = JSON.stringify(slides);
             ></button>
           ))}
         </div>
-        <span class="text-[10px] font-bold tracking-[0.22em] text-white/55 uppercase">01 / 03</span>
+        <span class="banner-three-counter text-[10px] font-bold tracking-[0.22em] text-white/55 uppercase">01 / 03</span>
       </div>
     </div>
   </div>
@@ -111,7 +110,7 @@ const jsonSlides = JSON.stringify(slides);
       const slides = [...section.querySelectorAll<HTMLElement>("[data-hero-slide]")];
       const copies = [...section.querySelectorAll<HTMLElement>("[data-hero-copy]")];
       const dots = [...section.querySelectorAll<HTMLButtonElement>("[data-hero-dot]")];
-      const counter = section.querySelector<HTMLElement>(".banner-three-dot")?.parentElement?.nextElementSibling as HTMLElement | null;
+      const counter = section.querySelector<HTMLElement>(".banner-three-counter");
       if (!slides.length || slides.length !== copies.length) return;
 
       let current = 0;
@@ -192,7 +191,12 @@ const jsonSlides = JSON.stringify(slides);
 
   @media (max-width: 767px) {
     .banner-three-copy {
-      min-height: 350px;
+      min-height: 405px;
+    }
+
+    .banner-three-copy-slide {
+      justify-content: flex-start;
+      padding-top: 2rem;
     }
 
     .banner-three-slide {
