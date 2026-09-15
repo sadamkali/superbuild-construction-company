@@ -6,9 +6,9 @@ mapImage: "https://images.pexels.com/photos/37636298/pexels-photo-37636298/free-
 gradientBackgroundImage: ""
 buttons:
   - enable: true
+    label: "Contact Us"
+    url: "/#contact"
+  - enable: true
     label: "Our Services"
     url: "/services/"
-  - enable: true
-    label: "Get a Quote"
-    url: "/#contact"
 ---
