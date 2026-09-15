@@ -8,7 +8,7 @@ const stages = [
   { number: "01", label: "PLANNING", title: "Start with a clear plan.", description: "We review your needs, drawings, scope, budget, and timeline before work begins.", image: "https://images.pexels.com/videos/8964379/adult-architect-blueprint-building-8964379.jpeg?auto=compress&dpr=1&h=750&w=1260" },
   { number: "02", label: "SITE PREPARATION", title: "Prepare the ground properly.", description: "Surveying, excavation, materials, access, safety, and site coordination are put in place.", image: "https://images.pexels.com/photos/37636298/pexels-photo-37636298/free-photo-of-construction-site-with-workers-and-excavator.jpeg?auto=compress&dpr=1&h=750&w=1260" },
   { number: "03", label: "BUILDING", title: "Build with strength and care.", description: "Our teams handle the structural work and construction stages with close attention to quality.", image: "https://images.pexels.com/photos/11680715/pexels-photo-11680715.jpeg?auto=compress&dpr=1&w=1260" },
-  { number: "04", label: "PROJECT MANAGEMENT", title: "Keep every part moving together.", description: "We coordinate people, materials, schedules, inspections, and site progress from start to finish.", image: "https://images.pexels.com/videos/8964379/adult-architect-blueprint-building-8964379.jpeg?auto=compress&dpr=1&h=750&w=1260" },
+  { number: "04", label: "PROJECT MANAGEMENT", title: "Keep every part moving together.", description: "We coordinate people, materials, schedules, inspections, and site progress from start to finish.", image: "https://images.pexels.com/photos/32858871/pexels-photo-32858871.jpeg?auto=compress&dpr=1&w=1260" },
   { number: "05", label: "HANDOVER", title: "Finish ready for use.", description: "Final checks, finishing details, cleaning, and handover complete the project.", image: "https://images.pexels.com/photos/32858871/pexels-photo-32858871.jpeg?auto=compress&dpr=1&w=1260" },
 ];
 
@@ -18,32 +18,47 @@ const jsonStages = JSON.stringify(stages);
 <section class="construction-film relative bg-slate-950 text-white" data-construction-film data-stages={jsonStages}>
   <div class="construction-film__pin relative min-h-[100svh] overflow-hidden">
     <div class="absolute inset-0 bg-slate-950">
-      <img class="construction-film__poster absolute inset-0 h-full w-full object-cover object-center" src={poster} alt="SuperBuild construction planning and site work" loading="eager" decoding="async" />
-      <video class="construction-film__video absolute inset-0 h-full w-full object-cover object-center opacity-0" playsinline muted preload="metadata" aria-hidden="true" disablepictureinpicture data-video={videoSource} poster={poster}></video>
-      <div class="absolute inset-0 bg-slate-950/48"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-slate-950/94 via-slate-950/62 to-slate-950/18"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-slate-950/28"></div>
+      <img class="construction-film__poster absolute inset-0 h-full w-full object-cover object-center" src={poster} alt="Construction planning and site work" loading="eager" decoding="async" />
+      <video class="construction-film__video absolute inset-0 h-full w-full object-cover object-center opacity-0" playsinline muted autoplay loop preload="auto" aria-hidden="true" disablepictureinpicture data-video={videoSource} poster={poster}></video>
+      <div class="absolute inset-0 bg-black/28"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950/82 via-slate-950/42 to-slate-950/12"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/72 via-transparent to-slate-950/18"></div>
     </div>
-    <div class="construction-film__content container relative z-10 flex min-h-[100svh] items-center py-20 md:py-24">
+
+    <div class="construction-film__content container relative z-10 flex min-h-[100svh] items-center py-24 md:py-28">
       <div class="grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-16">
         <div class="construction-film__intro max-w-3xl">
           <div class="text-primary inline-flex items-center gap-3 text-xs font-bold tracking-[0.24em] uppercase"><span class="h-px w-10 bg-primary"></span>The SuperBuild Way</div>
           <h2 class="mt-5 text-4xl leading-[1.05] font-semibold tracking-tight text-white md:text-6xl lg:text-7xl">From planning to handover.</h2>
-          <p class="mt-6 max-w-2xl text-base leading-7 text-white/82 md:text-lg md:leading-8">A clear construction process, carefully coordinated from the first plan to the final handover.</p>
-          <div class="mt-8 flex flex-wrap items-center gap-4"><Button label="Talk to SuperBuild" url="/#contact" enable={true} /><span class="text-sm text-white/55">Scroll to explore</span></div>
+          <p class="mt-6 max-w-2xl text-base leading-7 text-white/90 md:text-lg md:leading-8">A clear construction process, carefully coordinated from the first plan to the final handover.</p>
+          <div class="mt-9 flex flex-wrap items-center gap-4"><Button label="Talk to SuperBuild" url="/#contact" enable={true} /><span class="rounded-full border border-white/15 bg-black/20 px-4 py-2 text-sm text-white/70 backdrop-blur-sm">Scroll through the five stages</span></div>
         </div>
-        <div class="construction-film__stage-panel rounded-3xl border border-white/12 bg-slate-950/55 p-4 shadow-2xl shadow-black/20 backdrop-blur-xl md:p-5">
-          <div class="overflow-hidden rounded-2xl border border-white/10 bg-white/5"><img class="construction-film__stage-image h-56 w-full object-cover md:h-64" src={stages[0].image} alt="Construction planning" loading="lazy" decoding="async" /></div>
+
+        <div class="construction-film__stage-panel rounded-3xl border border-white/14 bg-slate-950/72 p-4 shadow-2xl shadow-black/30 backdrop-blur-xl md:p-5">
+          <div class="overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <img class="construction-film__stage-image h-56 w-full object-cover md:h-64" src={stages[0].image} alt="Construction planning" loading="eager" decoding="async" />
+          </div>
           <div class="p-2 pt-5 md:p-3 md:pt-6">
-            <div class="flex items-start justify-between gap-4"><div><div class="construction-film__stage-number text-primary text-3xl font-semibold leading-none">01</div><div class="construction-film__stage-label mt-2 text-[11px] font-bold tracking-[0.2em] text-white/55 uppercase">Planning</div></div><div class="pt-1 text-[11px] font-medium tracking-[0.16em] text-white/35 uppercase">01 — 05</div></div>
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="construction-film__stage-number text-primary text-3xl font-semibold leading-none">01</div>
+                <div class="construction-film__stage-label mt-2 text-[11px] font-bold tracking-[0.2em] text-white/75 uppercase">Planning</div>
+              </div>
+              <div class="pt-1 text-[11px] font-medium tracking-[0.16em] text-white/50 uppercase">01 — 05</div>
+            </div>
             <h3 class="construction-film__stage-title mt-5 text-2xl font-semibold text-white">Start with a clear plan.</h3>
-            <p class="construction-film__stage-description mt-3 text-sm leading-6 text-white/68">We review your needs, drawings, scope, budget, and timeline before work begins.</p>
-            <div class="mt-7 flex gap-2" aria-hidden="true">{stages.map((stage, index) => <span class:list={["construction-film__progress-dot h-1.5 flex-1 rounded-full bg-white/15 transition-all duration-300", index === 0 && "!bg-primary"]} data-stage-dot={index}></span>)}</div>
+            <p class="construction-film__stage-description mt-3 text-sm leading-6 text-white/82">We review your needs, drawings, scope, budget, and timeline before work begins.</p>
+            <div class="mt-7 flex gap-2" aria-hidden="true">{stages.map((stage, index) => <span class:list={["construction-film__progress-dot h-1.5 flex-1 rounded-full bg-white/20 transition-all duration-300", index === 0 && "!bg-primary"]} data-stage-dot={index}></span>)}</div>
           </div>
         </div>
       </div>
     </div>
-    <div class="pointer-events-none absolute right-6 bottom-6 left-6 z-10 md:right-10 md:bottom-8 md:left-10"><div class="mx-auto max-w-7xl"><div class="flex items-center gap-4"><span class="text-[10px] font-bold tracking-[0.24em] text-white/45 uppercase">Scroll</span><div class="h-px flex-1 bg-white/15"><i class="construction-film__rail bg-primary block h-px origin-left" style="transform:scaleX(0)"></i></div></div></div></div>
+
+    <div class="pointer-events-none absolute right-6 bottom-6 left-6 z-10 md:right-10 md:bottom-8 md:left-10">
+      <div class="mx-auto max-w-7xl">
+        <div class="flex items-center gap-4"><span class="text-[10px] font-bold tracking-[0.24em] text-white/60 uppercase">Scroll</span><div class="h-px flex-1 bg-white/20"><i class="construction-film__rail bg-primary block h-px origin-left" style="transform:scaleX(0)"></i></div></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -52,6 +67,7 @@ const jsonStages = JSON.stringify(stages);
     document.querySelectorAll<HTMLElement>("[data-construction-film]").forEach((section) => {
       if (section.dataset.constructionFilmReady !== undefined) return;
       section.dataset.constructionFilmReady = "";
+
       const video = section.querySelector<HTMLVideoElement>(".construction-film__video");
       const poster = section.querySelector<HTMLImageElement>(".construction-film__poster");
       const rail = section.querySelector<HTMLElement>(".construction-film__rail");
@@ -65,29 +81,129 @@ const jsonStages = JSON.stringify(stages);
       const dots = [...section.querySelectorAll<HTMLElement>("[data-stage-dot]")];
       const stages = JSON.parse(section.dataset.stages || "[]") as Array<{number:string;label:string;title:string;description:string;image:string}>;
       if (!video || !poster || !rail || !panel || !intro || !stageNumber || !stageLabel || !stageTitle || !stageDescription || !stageImage) return;
-      let loaded = false;
+
       let raf = 0;
       let lastStage = -1;
-      const clamp = (v:number) => Math.min(1, Math.max(0, v));
-      const loadVideo = () => { if (loaded) return; loaded = true; video.src = video.dataset.video || ""; video.preload = "auto"; video.load(); };
-      const setStage = (index:number) => { if (index === lastStage || !stages[index]) return; lastStage = index; const stage = stages[index]; stageNumber.textContent = stage.number; stageLabel.textContent = stage.label; stageTitle.textContent = stage.title; stageDescription.textContent = stage.description; stageImage.src = stage.image; stageImage.animate([{opacity:0.25},{opacity:1}], {duration:380,easing:"ease-out"}); dots.forEach((dot,i)=>dot.classList.toggle("!bg-primary", i===index)); };
-      const update = () => { const rect = section.getBoundingClientRect(); const travel = Math.max(section.offsetHeight-window.innerHeight,1); const progress = clamp(-rect.top/travel); const index = Math.min(stages.length-1, Math.floor(progress*stages.length)); setStage(index); rail.style.transform = `scaleX(${progress})`; if (loaded && video.readyState >= 2 && Number.isFinite(video.duration) && video.duration > 0) { const target = Math.max(0, Math.min(video.duration-0.04, progress*video.duration)); if (Math.abs(video.currentTime-target)>0.035) video.currentTime=target; video.classList.add("opacity-100"); poster.classList.add("opacity-0"); } };
-      const requestUpdate = () => { if (raf) return; raf=requestAnimationFrame(()=>{raf=0;update();}); };
-      const observer = new IntersectionObserver((entries)=>{ if(entries.some((entry)=>entry.isIntersecting)){loadVideo();requestUpdate();} },{rootMargin:"150px 0px"});
-      observer.observe(section); window.addEventListener("scroll",requestUpdate,{passive:true}); window.addEventListener("resize",requestUpdate); video.addEventListener("loadedmetadata",requestUpdate); video.addEventListener("canplay",requestUpdate,{once:true}); video.addEventListener("error",()=>{video.classList.remove("opacity-100");poster.classList.remove("opacity-0");});
-      const reveal = new IntersectionObserver((entries)=>{if(entries.some((entry)=>entry.isIntersecting)){intro.classList.add("is-visible");panel.classList.add("is-visible");reveal.disconnect();}},{threshold:0.12}); reveal.observe(section); requestUpdate();
+      const clamp = (value:number) => Math.min(1, Math.max(0, value));
+
+      const preloadStageImages = () => {
+        stages.slice(1).forEach((stage) => {
+          const image = new Image();
+          image.src = stage.image;
+        });
+      };
+
+      const setStage = (index:number) => {
+        if (index === lastStage || !stages[index]) return;
+        lastStage = index;
+        const stage = stages[index];
+        stageNumber.textContent = stage.number;
+        stageLabel.textContent = stage.label;
+        stageTitle.textContent = stage.title;
+        stageDescription.textContent = stage.description;
+        stageImage.style.opacity = "0.2";
+        stageImage.src = stage.image;
+        stageImage.animate([{opacity:0.25,transform:"scale(1.025)"},{opacity:1,transform:"scale(1)"}], {duration:450,easing:"cubic-bezier(.22,1,.36,1)"});
+        dots.forEach((dot,i)=>dot.classList.toggle("!bg-primary", i===index));
+      };
+
+      const update = () => {
+        const rect = section.getBoundingClientRect();
+        const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
+        const progress = clamp(-rect.top / travel);
+        const index = Math.min(stages.length - 1, Math.floor(progress * stages.length));
+        setStage(index);
+        rail.style.transform = `scaleX(${progress})`;
+      };
+
+      const requestUpdate = () => {
+        if (raf) return;
+        raf = requestAnimationFrame(() => { raf = 0; update(); });
+      };
+
+      const reveal = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          intro.classList.add("is-visible");
+          panel.classList.add("is-visible");
+          preloadStageImages();
+          reveal.disconnect();
+        }
+      }, { threshold: 0.1 });
+
+      reveal.observe(section);
+      window.addEventListener("scroll", requestUpdate, { passive: true });
+      window.addEventListener("resize", requestUpdate);
+      video.addEventListener("canplay", () => { video.classList.add("opacity-100"); poster.classList.add("opacity-0"); }, { once: true });
+      video.addEventListener("error", () => { video.classList.remove("opacity-100"); poster.classList.remove("opacity-0"); });
+      requestUpdate();
     });
   };
-  document.addEventListener("astro:page-load", install); install();
+
+  document.addEventListener("astro:page-load", install);
+  install();
 </script>
 
 <style>
-  .construction-film { min-height: 300svh; }
-  .construction-film__pin { position: sticky; top: 0; }
-  .construction-film__poster,.construction-film__video { transition: opacity 700ms ease; }
-  .construction-film__intro,.construction-film__stage-panel { opacity:0; transform:translateY(28px); transition:opacity 900ms ease,transform 900ms cubic-bezier(.22,1,.36,1); }
-  .construction-film__stage-panel { transform:translateY(34px) scale(.985); transition-delay:120ms; }
-  .construction-film__intro.is-visible,.construction-film__stage-panel.is-visible { opacity:1; transform:translateY(0) scale(1); }
-  @media (max-width:767px) { .construction-film { min-height:240svh; } }
-  @media (prefers-reduced-motion:reduce) { .construction-film { min-height:100svh; } .construction-film__pin { position:relative; } .construction-film__intro,.construction-film__stage-panel { opacity:1; transform:none; transition:none; } }
+  .construction-film {
+    position: relative;
+    min-height: 500svh;
+  }
+
+  .construction-film__pin {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+  }
+
+  .construction-film__poster,
+  .construction-film__video {
+    transition: opacity 650ms ease;
+  }
+
+  .construction-film__intro,
+  .construction-film__stage-panel {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 850ms ease, transform 850ms cubic-bezier(.22,1,.36,1);
+  }
+
+  .construction-film__stage-panel {
+    transform: translateY(38px) scale(.985);
+    transition-delay: 120ms;
+  }
+
+  .construction-film__intro.is-visible,
+  .construction-film__stage-panel.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .construction-film__rail {
+    width: 100%;
+    transform-origin: left;
+    transition: transform 120ms linear;
+  }
+
+  @media (max-width: 767px) {
+    .construction-film {
+      min-height: 500svh;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .construction-film {
+      min-height: 100svh;
+    }
+
+    .construction-film__pin {
+      position: relative;
+    }
+
+    .construction-film__intro,
+    .construction-film__stage-panel {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
 </style>
