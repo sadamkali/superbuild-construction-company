@@ -1,62 +1,38 @@
 ---
-enable: true # Boolean: true | false
-imagePosition: "left" # Enum: left | right
+enable: true
+imagePosition: "left"
 
 images:
   large: "/images/about-us/about-1-a.jpg"
   small: "/images/about-us/about-1-b.jpg"
 
 title: |
-  More than 25+ years we provide IT solutions
+  Quality construction, built with care
 subtitle: |
-  During this time, we have built a reputation for dependable delivery, practical guidance, and long-term client support.
+  SuperBuild Construction Company provides dependable construction services for clients who value quality workmanship, clear communication, and professional project delivery.
 description: |
-  We help organizations modernize technology with clear planning, focused delivery, and maintainable systems.
+  From new building work and renovations to roofing, concrete, masonry, and finishing works, we focus on doing each stage properly. We combine careful planning, skilled workmanship, safety, and attention to detail to deliver spaces made to last.
 
-# EXTRATYPE OPTIONS: "skills" | "list-x" | "list-y" | "stats" | "none"
-extraType: "none"
+extraType: "list-x"
 
-# SHARED BUTTON CONFIGURATION (Applies to all section buttons)
 buttons:
-  - enable: true # Boolean: true | false
-    label: "Explore Our Services"
+  - enable: true
+    label: "Our Services"
     url: "/services/"
-    tag: "a" # Enum: a | button
-    variant: "fill" # Enum: fill | fill-white | outline | text | circle
-    hoverEffect: "magnetic-text-flip" # Enum: text-flip | creative-fill | magnetic | magnetic-text-flip
-    icon: # Object
+    tag: "a"
+    variant: "fill"
+    hoverEffect: "magnetic-text-flip"
+    icon:
       enable: false
-      name: "ArrowUpRight" # String: Lucide Icon Name - https://lucide.de v/icons/?search=
-      position: "right" # Enum: left | right (Note: text variant is always right)
+      name: "ArrowUpRight"
+      position: "right"
     rel: "noopener"
-    target: "_blank" # String: _blank | _self
-    class: "" # String: Additional button Tailwind classes
+    target: "_self"
+    class: ""
 
-
-# extraType: "skills"
-# skills: # Array of objects
-#   - label: "IT Solution & Management"
-#     value: "86" # String: Percentage value (0-100)
-#   - label: "Website & App Development"
-#     value: "72"
-
-# extraType: "list-x"
-# listItems: # Array of objects
-#   - title: "Provide Skills Services"
-#     icon: "Settings" # String: Lucide Icon Name
-#   - title: "Urgent Support For Clients"
-#     icon: "Headphones"
-
-# extraType: "stats"
-# stats: # Array of objects
-#   - value: "1800" # String: Numeric value for animation
-#     prependValue: "$" # String: Symbol before number
-#     appendValue: "+" # String: Symbol after number
-#     label: "Happy Clients"
-
-# extraType: "list-y"
-# listItems: # Array of objects
-#   - title: "Quality Solution for Business"
-#     description: "Customize almost anything in the appearance."
-#     icon: "Trophy" # String: Lucide Icon Name
+listItems:
+  - title: "Quality<br />Workmanship"
+    icon: "Hammer"
+  - title: "Safety &<br />Reliability"
+    icon: "ShieldCheck"
 ---
