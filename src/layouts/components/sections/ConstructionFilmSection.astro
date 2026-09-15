@@ -15,28 +15,27 @@ const stages = [
 const jsonStages = JSON.stringify(stages);
 ---
 
-<section class="construction-film relative bg-slate-950 text-white" data-construction-film data-stages={jsonStages}>
-  <div class="construction-film__top-fade pointer-events-none absolute inset-x-0 top-0 z-20 h-28"></div>
-
-  <div class="construction-film__pin relative min-h-[100svh] overflow-hidden">
+<section class="construction-film relative overflow-hidden bg-slate-950 text-white" data-construction-film data-stages={jsonStages}>
+  <div class="construction-film__pin relative min-h-[100svh] overflow-hidden bg-slate-950">
     <div class="absolute inset-0 bg-slate-950">
       <img class="construction-film__poster absolute inset-0 h-full w-full object-cover object-center" src={poster} alt="Construction planning and site work" loading="eager" decoding="async" />
       <video class="construction-film__video absolute inset-0 h-full w-full object-cover object-center opacity-0" playsinline muted autoplay loop preload="auto" aria-hidden="true" disablepictureinpicture src={videoSource} poster={poster}></video>
-      <div class="absolute inset-0 bg-black/28"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-slate-950/82 via-slate-950/42 to-slate-950/12"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/72 via-transparent to-slate-950/18"></div>
+      <div class="absolute inset-0 bg-black/25"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950/84 via-slate-950/42 to-slate-950/08"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/78 via-slate-950/18 to-slate-950/08"></div>
+      <div class="construction-film__edge-fade construction-film__edge-fade--top absolute inset-x-0 top-0 h-24 md:h-32"></div>
+      <div class="construction-film__edge-fade construction-film__edge-fade--bottom absolute inset-x-0 bottom-0 h-28 md:h-40"></div>
     </div>
 
     <div class="construction-film__content container relative z-10 flex min-h-[100svh] items-center py-20 md:py-24 lg:py-28">
       <div class="grid w-full grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-16">
         <div class="construction-film__intro max-w-3xl">
-          <div class="text-primary inline-flex items-center gap-3 text-xs font-bold tracking-[0.24em] uppercase"><span class="h-px w-10 bg-primary"></span>The SuperBuild Way</div>
-          <h2 class="mt-5 text-4xl leading-[1.05] font-semibold tracking-tight text-white md:text-6xl lg:text-7xl">From planning to handover.</h2>
+          <h2 class="mt-0 text-4xl leading-[1.05] font-semibold tracking-tight text-white md:text-6xl lg:text-7xl">From planning to handover.</h2>
           <p class="mt-6 max-w-2xl text-base leading-7 text-white/90 md:text-lg md:leading-8">A clear construction process, carefully coordinated from the first plan to the final handover.</p>
-          <div class="mt-8 flex flex-wrap items-center gap-3 md:mt-9 md:gap-4"><Button label="Talk to SuperBuild" url="/#contact" enable={true} /><span class="rounded-full border border-white/15 bg-black/20 px-4 py-2 text-sm text-white/70 backdrop-blur-sm">Scroll through the five stages</span></div>
+          <div class="mt-8 flex items-center"><Button label="Contact Us" url="/#contact" enable={true} /></div>
         </div>
 
-        <div class="construction-film__stage-panel rounded-3xl border border-white/14 bg-slate-950/72 p-3 shadow-2xl shadow-black/30 backdrop-blur-xl md:p-5">
+        <div class="construction-film__stage-panel rounded-3xl border border-white/14 bg-slate-950/72 p-4 shadow-2xl shadow-black/30 backdrop-blur-xl md:p-5">
           <div class="overflow-hidden rounded-2xl border border-white/10 bg-white/5">
             <img class="construction-film__stage-image h-52 w-full object-cover md:h-64" src={stages[0].image} alt="Construction planning" loading="eager" decoding="async" />
           </div>
@@ -62,8 +61,6 @@ const jsonStages = JSON.stringify(stages);
       </div>
     </div>
   </div>
-
-  <div class="construction-film__bottom-fade pointer-events-none absolute inset-x-0 bottom-0 z-20 h-32"></div>
 </section>
 
 <script>
@@ -115,7 +112,6 @@ const jsonStages = JSON.stringify(stages);
         stageLabel.textContent = stage.label;
         stageTitle.textContent = stage.title;
         stageDescription.textContent = stage.description;
-        stageImage.style.opacity = "0.2";
         stageImage.src = stage.image;
         stageImage.animate([{opacity:0.2,transform:"scale(1.025)"},{opacity:1,transform:"scale(1)"}], {duration:450,easing:"cubic-bezier(.22,1,.36,1)"});
         dots.forEach((dot,i)=>dot.classList.toggle("!bg-primary", i===index));
@@ -162,8 +158,8 @@ const jsonStages = JSON.stringify(stages);
 
 <style>
   .construction-film {
-    position: relative;
     min-height: 500svh;
+    background: #020617;
     isolation: isolate;
   }
 
@@ -178,12 +174,12 @@ const jsonStages = JSON.stringify(stages);
     transition: opacity 800ms ease;
   }
 
-  .construction-film__top-fade {
-    background: linear-gradient(to bottom, rgb(255 255 255 / 0.9), transparent);
+  .construction-film__edge-fade--top {
+    background: linear-gradient(to bottom, #020617 0%, rgba(2, 6, 23, 0.58) 32%, rgba(2, 6, 23, 0) 100%);
   }
 
-  .construction-film__bottom-fade {
-    background: linear-gradient(to top, rgb(255 255 255 / 0.95), transparent);
+  .construction-film__edge-fade--bottom {
+    background: linear-gradient(to top, #020617 0%, rgba(2, 6, 23, 0.62) 34%, rgba(2, 6, 23, 0) 100%);
   }
 
   .construction-film__intro,
@@ -211,12 +207,13 @@ const jsonStages = JSON.stringify(stages);
   }
 
   @media (max-width: 767px) {
-    .construction-film {
-      min-height: 500svh;
+    .construction-film__content {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
     }
 
-    .construction-film__top-fade,
-    .construction-film__bottom-fade {
+    .construction-film__edge-fade--top,
+    .construction-film__edge-fade--bottom {
       height: 5rem;
     }
   }
