@@ -1,112 +1,90 @@
 ---
-enable: true # Control the visibility of this section across all pages where it is used
-title: "Have Any Project on Your Mind?"
-description: "Great! We're excited to hear from you and let's start something"
-officeHours: "Office Hours: Mon - Sat: 8:00 AM - 10:00 PM" # Optional; remove or set empty to hide this row.
+enable: true
+title: "Have a Construction Project in Mind?"
+description: "Tell us what you are planning to build, renovate, or improve and our team will get back to you."
+officeHours: "Office Hours: Mon - Sat: 8:00 AM - 6:00 PM"
 
-# Check config.toml file for form action related settings
-# this is also used in the footer of the personal portfolio homepage
-formTitle: "Fill The Contact Form"
-formDescription: "Tell us what you need and our team will reply with useful next steps."
+formTitle: "Request a Quote"
+formDescription: "Share a few details about your project and we will contact you with the next steps."
 
 form:
-  emailSubject: "New form submission from your website" # Customized email subject (applicable when anyone submit form, form submission may receive by email depend on provider)
+  emailSubject: "New construction project enquiry"
   submitButton:
-    # Refer to the `sharedButton` schema in `src/sections.schema.ts` for all available configuration options (e.g., enable, label, url, hoverEffect, variant, icon, tag, rel, class, target, etc.)
     enable: true
-    label: "Send Message"
+    label: "Send Enquiry"
     class: "w-full justify-center rounded-md"
-    hoverEffect: "magnetic-text-flip" # Optional: text-flip | creative-fill | magnetic | magnetic-text-flip
-    # variant: "" # Optional: fill | outline | text | circle
-    # rel: "" # Optional
-    # target: "" # Optional
+    hoverEffect: "magnetic-text-flip"
 
-  # This note will show at the end of form
-  # note: |
-  #   Your data is safe with us. We respect your privacy and never share your information. <br /> Read our [Privacy Policy](/privacy-policy/).
   inputs:
     - label: "Your name"
       name: "Name"
       placeholder: "Your name"
       required: true
       halfWidth: true
+    - label: "Phone number"
+      name: "Phone"
+      placeholder: "Phone number"
+      type: "tel"
+      required: true
+      halfWidth: true
     - label: "Email address"
       name: "Email"
       placeholder: "Email address"
       type: "email"
-      required: true
       halfWidth: true
     - label: "Estimated budget"
       name: "Budget"
       placeholder: "Estimated budget"
-      type: "number"
+      type: "text"
       halfWidth: true
+    - label: "Project type"
+      name: "Project Type"
+      placeholder: "Select a project type"
+      required: true
+      dropdown:
+        type: "search"
+        search:
+          placeholder: "Search project type"
+        items:
+          - label: "Residential Construction"
+            value: "Residential Construction"
+          - label: "Commercial Construction"
+            value: "Commercial Construction"
+          - label: "Renovation & Remodeling"
+            value: "Renovation & Remodeling"
+          - label: "Roofing"
+            value: "Roofing"
+          - label: "Concrete & Structural Works"
+            value: "Concrete & Structural Works"
+          - label: "Finishing Works"
+            value: "Finishing Works"
+          - label: "Site Preparation & Excavation"
+            value: "Site Preparation & Excavation"
+          - label: "Project Management"
+            value: "Project Management"
     - label: "Preferred start date"
       name: "Start Date"
       placeholder: "Preferred start date"
       type: "date"
       halfWidth: true
-    - label: "Service interest"
-      name: "Service"
-      placeholder: "Select a service"
-      required: true
-      dropdown:
-        type: "search"
-        search:
-          placeholder: "Search service"
-        items:
-          - label: "Web & Mobile App Development"
-            value: "Web & Mobile App Development"
-          - label: "Cloud Infrastructure"
-            value: "Cloud Infrastructure"
-          - label: "Cybersecurity Review"
-            value: "Cybersecurity Review"
-          - label: "Data Tracking & Analytics"
-            value: "Data Tracking & Analytics"
-          - label: "Automation Workflow"
-            value: "Automation Workflow"
-    - label: "New project"
-      name: "Project Type"
-      value: "New project"
-      type: "radio"
-      group: "Project Type"
-      groupLabel: "Project type"
-      checked: true
+    - label: "Project location"
+      name: "Location"
+      placeholder: "Where is the project located?"
       halfWidth: true
-    - label: "Improve existing system"
-      name: "Project Type"
-      value: "Improve existing system"
-      type: "radio"
-      group: "Project Type"
-      halfWidth: true
-    - label: "Email"
-      name: "Preferred Contact"
-      value: "Email"
-      type: "checkbox"
-      group: "Preferred Contact"
-      groupLabel: "Preferred contact method"
-      checked: true
-      halfWidth: true
-    - label: "Phone"
-      name: "Preferred Contact"
-      value: "Phone"
-      type: "checkbox"
-      group: "Preferred Contact"
-      halfWidth: true
-    - label: "Write your message"
+    - label: "Tell us about your project"
       name: "Message"
-      placeholder: "Write your message"
+      placeholder: "Tell us what you would like us to build or work on"
       tag: "textarea"
       rows: "5"
       required: true
-    - label: "I agree to be contacted about this request."
+    - label: "I agree to be contacted about this enquiry."
       name: "Consent"
       value: true
       type: "checkbox"
       required: true
     - note: success
       parentClass: "hidden text-sm message success"
-      content: "Thank you. We received your request and will reply with useful next steps."
+      content: "Thank you. We received your enquiry and will contact you soon."
     - note: deprecated
       parentClass: "hidden text-sm message error"
       content: "Something went wrong. Please try again or contact us directly."
