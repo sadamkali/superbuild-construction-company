@@ -20,70 +20,195 @@ const actualContent = overrideObjects(
   Astro.props.content,
 ) as BannerThreeType;
 
-const { title, description, gradientBackgroundImage, mapImage, buttons } =
-  actualContent;
-const backgroundImage = mapImage || "/images/banner/map.svg";
+const { buttons } = actualContent;
+
+const slides = [
+  {
+    image: "/images/gallery/1.jpg",
+    eyebrow: "SUPERBUILD CONSTRUCTION COMPANY",
+    title: "Building spaces that last.",
+    description: "Quality construction, dependable workmanship, and careful project delivery for homes, businesses, and developments.",
+  },
+  {
+    image: "/images/gallery/2.jpg",
+    eyebrow: "FROM PLAN TO COMPLETION",
+    title: "Built with care. Managed with precision.",
+    description: "From site preparation and structural work to finishing and handover, we keep every stage moving together.",
+  },
+  {
+    image: "/images/gallery/3.jpg",
+    eyebrow: "QUALITY YOU CAN SEE",
+    title: "Strong work. Professional results.",
+    description: "We combine practical experience, careful planning, and close attention to detail on every construction project.",
+  },
+];
+
+const jsonSlides = JSON.stringify(slides);
 ---
 
-<section class="banner-three-section bg-theme-dark relative min-h-[620px] overflow-hidden max-lg:min-h-[600px]">
-  {
-    backgroundImage && (
-      <div class="absolute inset-0 z-0">
+<section class="banner-three-section relative min-h-[620px] overflow-hidden bg-slate-950 max-lg:min-h-[600px]" data-hero-carousel data-slides={jsonSlides}>
+  <div class="absolute inset-0 z-0">
+    {slides.map((slide, index) => (
+      <div class:list={["banner-three-slide absolute inset-0", index === 0 && "is-active"]} data-hero-slide={index}>
         <OptimizedImage
-          src={backgroundImage}
+          src={slide.image}
           alt="Construction project site"
-          loading="eager"
-          fetchpriority="high"
+          loading={index === 0 ? "eager" : "lazy"}
+          fetchpriority={index === 0 ? "high" : undefined}
           class="h-full w-full object-cover object-center"
         />
-        <div class="absolute inset-0 bg-slate-950/65"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/55 to-slate-950/30"></div>
+        <div class="absolute inset-0 bg-slate-950/45"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/52 to-slate-950/22"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-slate-950/15"></div>
       </div>
-    )
-    }
-    {
-      gradientBackgroundImage && (
-        <div class="pointer-events-none absolute inset-0 z-1 flex">
-          <OptimizedImage
-            src={gradientBackgroundImage}
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            class="h-full w-full object-cover opacity-20"
-          />
-        </div>
-      )
-    }
+    ))}
+  </div>
 
-    <div class="container relative z-10 flex min-h-[620px] items-center py-28 max-lg:min-h-[600px] max-lg:py-24">
-      <div class="banner-three-content max-w-3xl text-left">
-        {
-          title && (
-            <h1
-              class="banner-three-title text-display-5 md:text-display-4 lg:text-display-3 xl:text-display-2 leading-tight text-white"
-              set:html={markdownify(title)}
-            />
-          )
-        }
-
-        {
-          description && (
-            <p
-              class="banner-three-description text-light mt-6 max-w-2xl text-base leading-7 md:text-lg md:leading-8"
-              set:html={markdownify(description)}
-            />
-          )
-        }
-
-        {
-          buttons?.length && (
-            <div class="banner-three-actions mt-10 flex flex-wrap items-center justify-start gap-4">
-              {buttons.map((button) => (
-                <Button {...button} />
-              ))}
+  <div class="container relative z-10 flex min-h-[620px] items-center py-24 max-lg:min-h-[600px] max-lg:py-20">
+    <div class="max-w-3xl text-left">
+      <div class="banner-three-copy relative min-h-[300px] md:min-h-[330px]">
+        {slides.map((slide, index) => (
+          <div class:list={["banner-three-copy-slide absolute inset-0 flex flex-col justify-center", index === 0 && "is-active"]} data-hero-copy={index}>
+            <div class="text-primary inline-flex items-center gap-3 text-xs font-bold tracking-[0.24em] uppercase">
+              <span class="h-px w-10 bg-primary"></span>
+              <span>{slide.eyebrow}</span>
             </div>
-          )
-        }
+            <h1 class="mt-5 text-display-5 leading-tight text-white md:text-display-4 lg:text-display-3 xl:text-display-2" set:html={markdownify(slide.title)}></h1>
+            <p class="mt-5 max-w-2xl text-base leading-7 text-white/90 md:text-lg md:leading-8" set:html={markdownify(slide.description)}></p>
+            {buttons?.length && (
+              <div class="banner-three-actions mt-8 flex flex-wrap items-center justify-start gap-3 md:mt-10 md:gap-4">
+                {buttons.map((button) => <Button {...button} />)}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-7 flex items-center gap-4 md:mt-9">
+        <div class="flex items-center gap-2" aria-label="Hero slides">
+          {slides.map((_, index) => (
+            <button
+              type="button"
+              class:list={["banner-three-dot h-1.5 w-8 rounded-full bg-white/35 transition-all duration-500 md:w-10", index === 0 && "is-active"]}
+              data-hero-dot={index}
+              aria-label={`Show slide ${index + 1}`}
+              aria-pressed={index === 0 ? "true" : "false"}
+            ></button>
+          ))}
+        </div>
+        <span class="text-[10px] font-bold tracking-[0.22em] text-white/55 uppercase">01 / 03</span>
       </div>
     </div>
+  </div>
 </section>
+
+<script>
+  const installHero = () => {
+    document.querySelectorAll<HTMLElement>("[data-hero-carousel]").forEach((section) => {
+      if (section.dataset.heroReady !== undefined) return;
+      section.dataset.heroReady = "";
+
+      const slides = [...section.querySelectorAll<HTMLElement>("[data-hero-slide]")];
+      const copies = [...section.querySelectorAll<HTMLElement>("[data-hero-copy]")];
+      const dots = [...section.querySelectorAll<HTMLButtonElement>("[data-hero-dot]")];
+      const counter = section.querySelector<HTMLElement>(".banner-three-dot")?.parentElement?.nextElementSibling as HTMLElement | null;
+      if (!slides.length || slides.length !== copies.length) return;
+
+      let current = 0;
+      let timer = 0;
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+      const setSlide = (index:number) => {
+        current = (index + slides.length) % slides.length;
+        slides.forEach((slide, i) => slide.classList.toggle("is-active", i === current));
+        copies.forEach((copy, i) => copy.classList.toggle("is-active", i === current));
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("is-active", i === current);
+          dot.setAttribute("aria-pressed", i === current ? "true" : "false");
+        });
+        if (counter) counter.textContent = `${String(current + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
+      };
+
+      const restart = () => {
+        window.clearInterval(timer);
+        if (!reducedMotion.matches) timer = window.setInterval(() => setSlide(current + 1), 6500);
+      };
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          setSlide(index);
+          restart();
+        });
+      });
+
+      slides.slice(1).forEach((slide) => {
+        const image = slide.querySelector<HTMLImageElement>("img");
+        if (image) {
+          const preload = new Image();
+          preload.src = image.currentSrc || image.src;
+        }
+      });
+
+      setSlide(0);
+      restart();
+    });
+  };
+
+  document.addEventListener("astro:page-load", installHero);
+  installHero();
+</script>
+
+<style>
+  .banner-three-slide {
+    opacity: 0;
+    transform: scale(1.035);
+    transition: opacity 950ms ease, transform 7000ms cubic-bezier(.22,1,.36,1);
+    pointer-events: none;
+  }
+
+  .banner-three-slide.is-active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .banner-three-copy-slide {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 650ms ease, transform 800ms cubic-bezier(.22,1,.36,1);
+    pointer-events: none;
+  }
+
+  .banner-three-copy-slide.is-active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .banner-three-dot.is-active {
+    width: 3rem;
+    background: var(--color-primary, currentColor);
+    opacity: 1;
+  }
+
+  @media (max-width: 767px) {
+    .banner-three-copy {
+      min-height: 350px;
+    }
+
+    .banner-three-slide {
+      transform: scale(1.02);
+    }
+
+    .banner-three-dot.is-active {
+      width: 2.25rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .banner-three-slide,
+    .banner-three-copy-slide {
+      transition: opacity 250ms ease;
+      transform: none;
+    }
+  }
+</style>
