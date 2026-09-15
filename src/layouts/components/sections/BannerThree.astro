@@ -25,63 +25,65 @@ const { title, description, gradientBackgroundImage, mapImage, buttons } =
 const backgroundImage = mapImage || "/images/banner/map.svg";
 ---
 
-<section class="banner-three-section bg-theme-dark relative overflow-hidden">
-  <div class="container py-44">
-    {
-      backgroundImage && (
+<section class="banner-three-section bg-theme-dark relative min-h-[620px] overflow-hidden max-lg:min-h-[600px]">
+  {
+    backgroundImage && (
+      <div class="absolute inset-0 z-0">
         <OptimizedImage
           src={backgroundImage}
-          alt="map"
-          aria-hidden="true"
+          alt="Construction project site"
           loading="eager"
           fetchpriority="high"
-          class="banner-three-map has-no-interaction lg:translate-centered absolute z-10 w-255 opacity-7 max-lg:bottom-0 max-lg:left-0"
+          class="h-full w-full object-cover object-center"
         />
-      )
+        <div class="absolute inset-0 bg-slate-950/65"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/55 to-slate-950/30"></div>
+      </div>
+    )
     }
     {
       gradientBackgroundImage && (
-        <div class="banner-three-gradient has-no-interaction translate-centered absolute z-10 flex h-245 w-400">
+        <div class="pointer-events-none absolute inset-0 z-1 flex">
           <OptimizedImage
             src={gradientBackgroundImage}
-            alt="map"
+            alt=""
             aria-hidden="true"
-            loading="eager"
-            fetchpriority="high"
-            class="w-400 flex-1 max-lg:bottom-0 max-lg:left-0"
+            loading="lazy"
+            class="h-full w-full object-cover opacity-20"
           />
         </div>
       )
     }
-    <div
-      class="banner-three-content relative z-10 mx-auto max-w-4xl text-center">
-      {
-        title && (
-          <h1
-            class="banner-three-title text-display-5 md:text-display-4 lg:text-display-3 xl:text-display-2 leading-tight text-white"
-            set:html={markdownify(title)}
-          />
-        )
-      }
 
-      {
-        description && (
-          <p
-            class="banner-three-description text-light mx-auto mt-5 max-w-4xl md:text-lg"
-            set:html={markdownify(description)}
-          />
-        )
-      }
+    <div class="container relative z-10 flex min-h-[620px] items-center py-28 max-lg:min-h-[600px] max-lg:py-24">
+      <div class="banner-three-content max-w-3xl text-left">
+        {
+          title && (
+            <h1
+              class="banner-three-title text-display-5 md:text-display-4 lg:text-display-3 xl:text-display-2 leading-tight text-white"
+              set:html={markdownify(title)}
+            />
+          )
+        }
 
-      {
-        buttons?.length && (
-          <div class="banner-three-actions mt-10 flex flex-wrap items-center justify-center gap-4">
-            {buttons.map((button) => (
-              <Button {...button} />
-            ))}
-          </div>
-        )
-      }
+        {
+          description && (
+            <p
+              class="banner-three-description text-light mt-6 max-w-2xl text-base leading-7 md:text-lg md:leading-8"
+              set:html={markdownify(description)}
+            />
+          )
+        }
+
+        {
+          buttons?.length && (
+            <div class="banner-three-actions mt-10 flex flex-wrap items-center justify-start gap-4">
+              {buttons.map((button) => (
+                <Button {...button} />
+              ))}
+            </div>
+          )
+        }
+      </div>
     </div>
-  </div>
 </section>
