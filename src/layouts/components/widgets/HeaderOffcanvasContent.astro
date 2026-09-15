@@ -26,37 +26,42 @@ if (!enable) {
 
 <div
   data-lenis-scroll-native
-  class="flex h-screen flex-col justify-between space-y-6 overflow-auto bg-white px-8 pt-16 pb-5 md:px-16 md:pb-10">
+  class="flex h-screen flex-col overflow-auto bg-white px-6 pt-10 pb-6 md:px-12 md:pb-8">
   <button
     type="button"
     data-hs-overlay={`#${offcanvas}`}
     title={t("aria.closeOffcanvas")}
-    class="absolute end-7 top-5 z-20 inline-flex h-12 w-12 items-center justify-center gap-x-2 rounded-full bg-slate-100 text-xl ring-transparent transition-all duration-500 ease-out hover:rotate-90"
+    class="absolute end-6 top-5 z-20 inline-flex h-10 w-10 items-center justify-center gap-x-2 rounded-full bg-slate-100 text-xl ring-transparent transition-all duration-500 ease-out hover:rotate-90 md:end-7 md:h-12 md:w-12"
     aria-expanded="true">
     <Icons icon="X" />
   </button>
 
   <Logo class="text-dark justify-start" src={logo} />
+
+  <div class="mt-6 lg:hidden">
+    <Navbar isMobile={true} navigationButton={navigationButton} />
+  </div>
+
   {
     (description || t("headerOffcanvas.description")) && (
       <p
+        class="mt-6 max-w-xl text-sm leading-6"
         set:html={markdownify(description || t("headerOffcanvas.description"))}
       />
     )
   }
 
-  <Social
-    linkType="follow"
-    list={social.main.filter((social) => social.enable)}
-  />
-  <div class="mb-10 pt-10 lg:hidden">
-    <Navbar isMobile={true} navigationButton={navigationButton} />
+  <div class="mt-5">
+    <Social
+      linkType="follow"
+      list={social.main.filter((social) => social.enable)}
+    />
   </div>
 
-  <div class="mt-auto space-y-10">
+  <div class="mt-8 grid gap-8 lg:mt-12">
     <div>
       <div
-        class="bg-theme-dark flex h-12 w-12 items-center justify-center rounded-lg">
+        class="bg-theme-dark flex h-11 w-11 items-center justify-center rounded-lg">
         <svg
           width="20"
           height="24"
@@ -72,20 +77,21 @@ if (!enable) {
       {
         t("headerOffcanvas.addressLabel") && (
           <div
-            class="text-dark mt-5 mb-2 text-lg font-medium"
+            class="text-dark mt-4 mb-2 text-base font-medium"
             set:html={markdownify(t("headerOffcanvas.addressLabel"))}
           />
         )
       }
       {
         address && (
-          <address class="not-italic" set:html={markdownify(address)} />
+          <address class="not-italic text-sm leading-6" set:html={markdownify(address)} />
         )
       }
     </div>
+
     <div>
       <div
-        class="bg-theme-dark flex h-12 w-12 items-center justify-center rounded-lg">
+        class="bg-theme-dark flex h-11 w-11 items-center justify-center rounded-lg">
         <svg
           width="22"
           height="20"
@@ -101,12 +107,12 @@ if (!enable) {
       {
         t("headerOffcanvas.contactLabel") && (
           <div
-            class="text-dark mt-5 mb-2 text-lg font-medium"
+            class="text-dark mt-4 mb-2 text-base font-medium"
             set:html={markdownify(t("headerOffcanvas.contactLabel"))}
           />
         )
       }
-      <div class="prose-a:underline">
+      <div class="prose-a:underline text-sm leading-6">
         {phone && <p set:html={markdownify(phone)} />}
         {email && <p set:html={markdownify(email)} />}
       </div>
