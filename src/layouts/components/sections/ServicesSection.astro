@@ -77,9 +77,9 @@ if (!hasContentSource || !enable || !services?.length) {
   <div
     class:list={[
       hasLightBackground && "section-spacing-vertical bg-theme-light",
-      "pb-10 md:pb-14",
+      "pb-0",
     ]}>
-    <div class:list={["space-y-16", layout !== "carousel" && "container"]}>
+    <div class:list={["space-y-10 md:space-y-12", layout !== "carousel" && "container"]}>
       {
         title && (
           <h2
@@ -140,7 +140,7 @@ if (!hasContentSource || !enable || !services?.length) {
             data-scroll-reveal="fade-up"
             data-scroll-reveal-delay="180"
             class:list={[
-              "flex justify-center",
+              "flex justify-center pb-0",
               layout === "carousel" && "container",
             ]}>
             <Button {...buttonProps} />
