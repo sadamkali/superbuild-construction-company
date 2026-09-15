@@ -2,7 +2,8 @@
 /**
  * OptimizedImage component is a modified version of Astro's built-in Image component.
  * It allows to optimize images inside public, src/assets and content folders.
- * To optimize remote images, follow: https://docs.astro.build/en/guides/images/#authorizing-remote-images
+ * Remote images are rendered directly so externally hosted construction imagery can
+ * be used safely while local project assets remain optimized through Astro.
  */
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
@@ -23,7 +24,6 @@ interface Props extends astroHTML.JSX.ImgHTMLAttributes {
   style?: astroHTML.JSX.CSSProperties | string;
 }
 
-// Destructuring Astro.props to get the component's props
 let {
   src,
   alt,
@@ -41,20 +41,18 @@ let {
 
 const resolvedLoading = loading ?? "lazy";
 const resolvedDecoding = decoding ?? "async";
-
 const isRemoteImage = src?.startsWith("http://") || src?.startsWith("https://");
+
 let image: ImageMetadata | null = null;
-let SVG: string = "";
+let SVG = "";
 
 if (!isRemoteImage) {
-  // Regular Images
   const images = import.meta.glob([
     "/src/assets/images/**/*.{jpeg,jpg,png,avif,tiff,gif,webp,svg,gif}",
     "/public/images/**/*.{jpeg,jpg,png,avif,tiff,gif,webp,svg,gif}",
     "/src/content/**/*.{jpeg,jpg,png,avif,tiff,gif,webp,svg,gif}",
   ]) as Record<string, () => Promise<{ default: ImageMetadata }>>;
 
-  // Get Raw Image For Inline SVG
   const imagesRaw = import.meta.glob(
     [
       "/src/assets/images/**/*.svg",
@@ -72,19 +70,16 @@ if (!isRemoteImage) {
     SVG = key ? await imagesRaw[key]() : "";
 
     if (SVG.length > 1) {
-      let svgParts = SVG.split("<svg"); // Split at the opening <svg> tag
+      const svgParts = SVG.split("<svg");
 
       if (svgParts.length > 1) {
-        // Convert rest object to a string of attributes
         const attributes = Object.entries(rest)
           .map(([key, value]) => `${key}="${value}"`)
           .join(" ");
 
-        // Add the attributes to the <svg> tag
         svgParts[1] = ` data-icon="true" ${attributes} ${svgParts[1]}`;
       }
 
-      // Join the array back into a string
       SVG = svgParts.join("<svg");
     }
   }
@@ -95,24 +90,34 @@ if (!isRemoteImage) {
 }
 ---
 
-{
-  inlineSvg && SVG && src.includes(".svg") ? (
-    <Fragment set:html={SVG} />
-  ) : image ? (
-    // @ts-expect-error
-    <Image
-      style={style}
-      alt={alt || ""}
-      width={width}
-      height={height}
-      widths={widths}
-      sizes={sizes}
-      formats={formats}
-      loading={resolvedLoading}
-      decoding={resolvedDecoding}
-      src={image}
-      {...{ class: Astro.props.class }}
-      {...rest}
-    />
-  ) : null
-}
+{inlineSvg && SVG && src.includes(".svg") ? (
+  <Fragment set:html={SVG} />
+) : isRemoteImage ? (
+  <img
+    src={src}
+    alt={alt || ""}
+    width={width}
+    height={height}
+    loading={resolvedLoading}
+    decoding={resolvedDecoding}
+    style={style}
+    {...{ class: Astro.props.class }}
+    {...rest}
+  />
+) : image ? (
+  // @ts-expect-error
+  <Image
+    style={style}
+    alt={alt || ""}
+    width={width}
+    height={height}
+    widths={widths}
+    sizes={sizes}
+    formats={formats}
+    loading={resolvedLoading}
+    decoding={resolvedDecoding}
+    src={image}
+    {...{ class: Astro.props.class }}
+    {...rest}
+  />
+) : null}
