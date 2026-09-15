@@ -44,7 +44,7 @@
   blogPagination = 6
   pagination     = 8
   stickyHeader   = true
-  contactFormAction = "https://formsubmit.co/your-email@example.com"
+  contactFormAction = "/"
   contactFormProvider = "formsubmit.co"
   footerDescription = ""
 
