@@ -15,7 +15,7 @@ button:
 
 options:
   layout: "carousel"
-  limit: 6
+  limit: 10
   marquee:
     elementWidthAuto: false
     elementWidth: "22rem"
