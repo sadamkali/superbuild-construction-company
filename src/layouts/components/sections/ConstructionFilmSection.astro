@@ -16,29 +16,31 @@ const jsonStages = JSON.stringify(stages);
 ---
 
 <section class="construction-film relative bg-slate-950 text-white" data-construction-film data-stages={jsonStages}>
+  <div class="construction-film__top-fade pointer-events-none absolute inset-x-0 top-0 z-20 h-28"></div>
+
   <div class="construction-film__pin relative min-h-[100svh] overflow-hidden">
     <div class="absolute inset-0 bg-slate-950">
       <img class="construction-film__poster absolute inset-0 h-full w-full object-cover object-center" src={poster} alt="Construction planning and site work" loading="eager" decoding="async" />
-      <video class="construction-film__video absolute inset-0 h-full w-full object-cover object-center opacity-0" playsinline muted autoplay loop preload="auto" aria-hidden="true" disablepictureinpicture data-video={videoSource} poster={poster}></video>
+      <video class="construction-film__video absolute inset-0 h-full w-full object-cover object-center opacity-0" playsinline muted autoplay loop preload="auto" aria-hidden="true" disablepictureinpicture src={videoSource} poster={poster}></video>
       <div class="absolute inset-0 bg-black/28"></div>
       <div class="absolute inset-0 bg-gradient-to-r from-slate-950/82 via-slate-950/42 to-slate-950/12"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-slate-950/72 via-transparent to-slate-950/18"></div>
     </div>
 
-    <div class="construction-film__content container relative z-10 flex min-h-[100svh] items-center py-24 md:py-28">
-      <div class="grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-16">
+    <div class="construction-film__content container relative z-10 flex min-h-[100svh] items-center py-20 md:py-24 lg:py-28">
+      <div class="grid w-full grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-16">
         <div class="construction-film__intro max-w-3xl">
           <div class="text-primary inline-flex items-center gap-3 text-xs font-bold tracking-[0.24em] uppercase"><span class="h-px w-10 bg-primary"></span>The SuperBuild Way</div>
           <h2 class="mt-5 text-4xl leading-[1.05] font-semibold tracking-tight text-white md:text-6xl lg:text-7xl">From planning to handover.</h2>
           <p class="mt-6 max-w-2xl text-base leading-7 text-white/90 md:text-lg md:leading-8">A clear construction process, carefully coordinated from the first plan to the final handover.</p>
-          <div class="mt-9 flex flex-wrap items-center gap-4"><Button label="Talk to SuperBuild" url="/#contact" enable={true} /><span class="rounded-full border border-white/15 bg-black/20 px-4 py-2 text-sm text-white/70 backdrop-blur-sm">Scroll through the five stages</span></div>
+          <div class="mt-8 flex flex-wrap items-center gap-3 md:mt-9 md:gap-4"><Button label="Talk to SuperBuild" url="/#contact" enable={true} /><span class="rounded-full border border-white/15 bg-black/20 px-4 py-2 text-sm text-white/70 backdrop-blur-sm">Scroll through the five stages</span></div>
         </div>
 
-        <div class="construction-film__stage-panel rounded-3xl border border-white/14 bg-slate-950/72 p-4 shadow-2xl shadow-black/30 backdrop-blur-xl md:p-5">
+        <div class="construction-film__stage-panel rounded-3xl border border-white/14 bg-slate-950/72 p-3 shadow-2xl shadow-black/30 backdrop-blur-xl md:p-5">
           <div class="overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-            <img class="construction-film__stage-image h-56 w-full object-cover md:h-64" src={stages[0].image} alt="Construction planning" loading="eager" decoding="async" />
+            <img class="construction-film__stage-image h-52 w-full object-cover md:h-64" src={stages[0].image} alt="Construction planning" loading="eager" decoding="async" />
           </div>
-          <div class="p-2 pt-5 md:p-3 md:pt-6">
+          <div class="p-2 pt-4 md:p-3 md:pt-6">
             <div class="flex items-start justify-between gap-4">
               <div>
                 <div class="construction-film__stage-number text-primary text-3xl font-semibold leading-none">01</div>
@@ -46,20 +48,22 @@ const jsonStages = JSON.stringify(stages);
               </div>
               <div class="pt-1 text-[11px] font-medium tracking-[0.16em] text-white/50 uppercase">01 — 05</div>
             </div>
-            <h3 class="construction-film__stage-title mt-5 text-2xl font-semibold text-white">Start with a clear plan.</h3>
+            <h3 class="construction-film__stage-title mt-4 text-2xl font-semibold text-white">Start with a clear plan.</h3>
             <p class="construction-film__stage-description mt-3 text-sm leading-6 text-white/82">We review your needs, drawings, scope, budget, and timeline before work begins.</p>
-            <div class="mt-7 flex gap-2" aria-hidden="true">{stages.map((stage, index) => <span class:list={["construction-film__progress-dot h-1.5 flex-1 rounded-full bg-white/20 transition-all duration-300", index === 0 && "!bg-primary"]} data-stage-dot={index}></span>)}</div>
+            <div class="mt-6 flex gap-2" aria-hidden="true">{stages.map((stage, index) => <span class:list={["construction-film__progress-dot h-1.5 flex-1 rounded-full bg-white/20 transition-all duration-300", index === 0 && "!bg-primary"]} data-stage-dot={index}></span>)}</div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="pointer-events-none absolute right-6 bottom-6 left-6 z-10 md:right-10 md:bottom-8 md:left-10">
+    <div class="pointer-events-none absolute right-4 bottom-5 left-4 z-10 md:right-10 md:bottom-8 md:left-10">
       <div class="mx-auto max-w-7xl">
         <div class="flex items-center gap-4"><span class="text-[10px] font-bold tracking-[0.24em] text-white/60 uppercase">Scroll</span><div class="h-px flex-1 bg-white/20"><i class="construction-film__rail bg-primary block h-px origin-left" style="transform:scaleX(0)"></i></div></div>
       </div>
     </div>
   </div>
+
+  <div class="construction-film__bottom-fade pointer-events-none absolute inset-x-0 bottom-0 z-20 h-32"></div>
 </section>
 
 <script>
@@ -86,6 +90,16 @@ const jsonStages = JSON.stringify(stages);
       let lastStage = -1;
       const clamp = (value:number) => Math.min(1, Math.max(0, value));
 
+      const ensureVideoPlayback = () => {
+        video.play().then(() => {
+          video.classList.add("opacity-100");
+          poster.classList.add("opacity-0");
+        }).catch(() => {
+          video.classList.remove("opacity-100");
+          poster.classList.remove("opacity-0");
+        });
+      };
+
       const preloadStageImages = () => {
         stages.slice(1).forEach((stage) => {
           const image = new Image();
@@ -103,7 +117,7 @@ const jsonStages = JSON.stringify(stages);
         stageDescription.textContent = stage.description;
         stageImage.style.opacity = "0.2";
         stageImage.src = stage.image;
-        stageImage.animate([{opacity:0.25,transform:"scale(1.025)"},{opacity:1,transform:"scale(1)"}], {duration:450,easing:"cubic-bezier(.22,1,.36,1)"});
+        stageImage.animate([{opacity:0.2,transform:"scale(1.025)"},{opacity:1,transform:"scale(1)"}], {duration:450,easing:"cubic-bezier(.22,1,.36,1)"});
         dots.forEach((dot,i)=>dot.classList.toggle("!bg-primary", i===index));
       };
 
@@ -126,15 +140,18 @@ const jsonStages = JSON.stringify(stages);
           intro.classList.add("is-visible");
           panel.classList.add("is-visible");
           preloadStageImages();
+          ensureVideoPlayback();
           reveal.disconnect();
         }
       }, { threshold: 0.1 });
 
       reveal.observe(section);
+      video.addEventListener("loadeddata", ensureVideoPlayback, { once: true });
+      video.addEventListener("canplay", ensureVideoPlayback, { once: true });
+      video.addEventListener("error", () => { video.classList.remove("opacity-100"); poster.classList.remove("opacity-0"); });
       window.addEventListener("scroll", requestUpdate, { passive: true });
       window.addEventListener("resize", requestUpdate);
-      video.addEventListener("canplay", () => { video.classList.add("opacity-100"); poster.classList.add("opacity-0"); }, { once: true });
-      video.addEventListener("error", () => { video.classList.remove("opacity-100"); poster.classList.remove("opacity-0"); });
+      ensureVideoPlayback();
       requestUpdate();
     });
   };
@@ -147,6 +164,7 @@ const jsonStages = JSON.stringify(stages);
   .construction-film {
     position: relative;
     min-height: 500svh;
+    isolation: isolate;
   }
 
   .construction-film__pin {
@@ -157,7 +175,15 @@ const jsonStages = JSON.stringify(stages);
 
   .construction-film__poster,
   .construction-film__video {
-    transition: opacity 650ms ease;
+    transition: opacity 800ms ease;
+  }
+
+  .construction-film__top-fade {
+    background: linear-gradient(to bottom, rgb(255 255 255 / 0.9), transparent);
+  }
+
+  .construction-film__bottom-fade {
+    background: linear-gradient(to top, rgb(255 255 255 / 0.95), transparent);
   }
 
   .construction-film__intro,
@@ -187,6 +213,11 @@ const jsonStages = JSON.stringify(stages);
   @media (max-width: 767px) {
     .construction-film {
       min-height: 500svh;
+    }
+
+    .construction-film__top-fade,
+    .construction-film__bottom-fade {
+      height: 5rem;
     }
   }
 
