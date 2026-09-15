@@ -30,7 +30,7 @@
   },
   "widgets": {
     "searchTitle": "Search",
-    "postSearchFormPlaceholder": "Search insights, services, or guides...",
+    "postSearchFormPlaceholder": "Search construction services, projects, or information...",
     "searchInputPlaceholder": "Type to search...",
     "categoriesTitle": "Categories",
     "tagsTitle": "Tags",
@@ -42,11 +42,11 @@
     "fallbackName": "Please set name value",
     "fallbackPlaceholder": "Please set placeholder",
     "invalidSelect": "Please select a valid option.",
-    "sendMessage": "Send Message",
-    "validSelect": "Perfect!",
-    "submitting": "Form submitting...",
-    "unknownProvider": "Unknown form provider.",
-    "submissionFallback": "Please use the configured contact email to submit a ticket."
+    "sendMessage": "Send Enquiry",
+    "validSelect": "Thank you!",
+    "submitting": "Sending...",
+    "unknownProvider": "Contact form is not configured yet.",
+    "submissionFallback": "Please use the contact details provided to reach SuperBuild Construction Company."
   },
   "notFound": {
     "title": "Page Not Found",
@@ -55,8 +55,8 @@
     "buttonLabel": "Back to Homepage"
   },
   "headerOffcanvas": {
-    "description": "We help teams modernize infrastructure, secure critical systems, and launch digital products that are easier to scale and maintain.",
-    "addressLabel": "Address",
+    "description": "SuperBuild Construction Company provides dependable construction services with quality workmanship, careful planning, and professional project delivery.",
+    "addressLabel": "Location",
     "contactLabel": "Contact"
   },
   "blog": {
@@ -68,7 +68,7 @@
     "paginationNext": "Next Post"
   },
   "navigation": {
-    "buttonLabel": "Get in Touch"
+    "buttonLabel": "Get a Quote"
   },
   "select": {
     "loading": "Loading...",
@@ -76,11 +76,11 @@
     "searchPlaceholder": "Search..."
   },
   "footer": {
-    "description": "We partner with growing organizations to plan, build, secure, and support reliable technology systems for everyday business operations.",
+    "description": "Quality construction, dependable service, and careful workmanship for projects built to last.",
     "quickLinksTitle": "Quick Links",
     "servicesTitle": "Services",
     "informationTitle": "Information",
-    "copyright": "Copyright © 2026 Your Company. All rights reserved.",
-    "_comment": "Footer text matches the default footer design. Update this value if the product copyright changes."
+    "copyright": "Copyright © 2026 SuperBuild Construction Company. All rights reserved.",
+    "_comment": "SuperBuild Construction Company footer content."
   }
 }
