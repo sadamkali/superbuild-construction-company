@@ -3,6 +3,7 @@ import Base from "@/layouts/Base.astro";
 import { getEntryCTM } from "@/lib/contentParser.astro";
 import { generatePaths } from "@/lib/utils/i18nUtils.ts";
 import BannerThree from "@/components/sections/BannerThree.astro";
+import ConstructionFilmSection from "@/components/sections/ConstructionFilmSection.astro";
 import MultipurposeSection from "@/components/sections/Section.astro";
 import ServicesSection from "@/components/sections/ServicesSection.astro";
 import WorkingProcessSection from "@/components/sections/WorkingProcessSection.astro";
@@ -36,6 +37,7 @@ const skillSectionContent = await getEntryCTM(
       },
     }}
   />
+  <ConstructionFilmSection />
   <MultipurposeSection
     hasSectionBackground={true}
     content={skillSectionContent.data}
