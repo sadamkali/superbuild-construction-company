@@ -1,0 +1,1 @@
+Construction image assets used by the SuperBuild site are stored locally in this directory.
