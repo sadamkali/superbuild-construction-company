@@ -3,8 +3,8 @@ enable: true
 imagePosition: "left"
 
 images:
-  large: "/images/about-us/about-1-a.jpg"
-  small: "/images/about-us/about-1-b.jpg"
+  large: "/images/gallery/2.jpg"
+  small: "/images/gallery/3.jpg"
 
 title: |
   Quality construction, built with care
