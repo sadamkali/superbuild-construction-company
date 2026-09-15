@@ -76,8 +76,8 @@ if (!hasContentSource || !enable || !services?.length) {
 <section class:list={["overflow-hidden", !hasSectionSpacing && "pt-0"]}>
   <div
     class:list={[
-      hasLightBackground && "section-spacing-vertical bg-theme-light",
-      "pb-0",
+      hasLightBackground && "section-spacing-vertical bg-theme-light !pb-0",
+      "!pb-0",
     ]}>
     <div class:list={["space-y-10 md:space-y-12", layout !== "carousel" && "container"]}>
       {
