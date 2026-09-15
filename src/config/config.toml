@@ -89,8 +89,8 @@
     showDefaultLangInUrl = false
 
   [settings.contactInfo]
-    phone       = ""
-    email       = ""
+    phone       = "+256 758721008"
+    email       = "info@domain.com"
     address     = "Uganda"
     officeHours = "Office Hours: Mon - Sat: 8:00 AM – 6:00 PM"
 
