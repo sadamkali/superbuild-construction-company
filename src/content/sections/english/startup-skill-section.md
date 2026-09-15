@@ -7,34 +7,32 @@ images:
   small: "/images/skill/skill-2.jpg"
 
 title: |
-  We provide perfect IT solutions & technology
+  We build with quality from the ground up
 subtitle: |
-  Our team helps startups move from idea to launch with reliable systems, clear priorities, and practical technical support.
+  Good construction starts with good preparation. Our team works through each stage carefully, from planning and site preparation to construction and finishing.
 description: |
-  We plan, design, build, and optimize digital products that are easy for teams to manage and ready for future growth.
+  We keep projects organized, communicate clearly, and pay attention to the details that affect strength, safety, appearance, and long-term value.
 
-# EXTRATYPE OPTIONS: "skills" | "list-x" | "list-y" | "stats" | "none"
 extraType: "list-x"
 
-# SHARED BUTTON CONFIGURATION (Applies to all section buttons)
 buttons:
-  - enable: false # Boolean: true | false
+  - enable: false
     label: "Explore Our Services"
     url: "/services/"
-    tag: "a" # Enum: a | button
-    variant: "fill" # Enum: fill | fill-white | outline | text | circle
-    hoverEffect: "magnetic-text-flip" # Enum: text-flip | creative-fill | magnetic | magnetic-text-flip
-    icon: # Object
+    tag: "a"
+    variant: "fill"
+    hoverEffect: "magnetic-text-flip"
+    icon:
       enable: true
-      name: "ArrowUpRight" # String: Lucide Icon Name - https://lucide.de v/icons/?search=
-      position: "right" # Enum: left | right (Note: text variant is always right)
+      name: "ArrowUpRight"
+      position: "right"
     rel: "noopener"
-    target: "_blank" # String: _blank | _self
-    class: "" # String: Additional button Tailwind classes
+    target: "_self"
+    class: ""
 
 listItems:
-  - title: "Provide Skills<br />Services"
-    icon: "Settings"
-  - title: "Urgent Support<br />For Clients"
-    icon: "Headphones"
+  - title: "Careful<br />Planning"
+    icon: "ClipboardCheck"
+  - title: "Skilled<br />Workmanship"
+    icon: "HardHat"
 ---
