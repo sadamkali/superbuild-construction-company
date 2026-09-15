@@ -24,58 +24,51 @@ const { buttons } = actualContent;
 const slides = [
   {
     image: "/images/gallery/1.jpg",
-    eyebrow: "SUPERBUILD CONSTRUCTION COMPANY",
     title: "Building spaces that last.",
     description: "Quality construction, dependable workmanship, and careful project delivery for homes, businesses, and developments.",
   },
   {
     image: "/images/gallery/2.jpg",
-    eyebrow: "FROM PLAN TO COMPLETION",
-    title: "Built with care. Managed with precision.",
-    description: "From site preparation and structural work to finishing and handover, we keep every stage moving together.",
+    title: "Built with care from plan to completion.",
+    description: "We coordinate every stage of construction with practical experience, careful planning, and close attention to detail.",
   },
   {
     image: "/images/gallery/3.jpg",
-    eyebrow: "QUALITY YOU CAN SEE",
     title: "Strong work. Professional results.",
-    description: "We combine practical experience, careful planning, and close attention to detail on every construction project.",
+    description: "From structural work to finishing, we focus on durable construction and a clean, professional finish.",
   },
 ];
 
 const jsonSlides = JSON.stringify(slides);
 ---
 
-<section class="banner-three-section relative min-h-[620px] overflow-hidden bg-slate-950 max-lg:min-h-[600px]" data-hero-carousel data-slides={jsonSlides}>
-  <div class="absolute inset-0 z-0">
+<section class="banner-three-section relative min-h-[600px] overflow-hidden bg-slate-950 md:min-h-[640px]" data-hero-carousel data-slides={jsonSlides}>
+  <div class="absolute inset-0 z-0 bg-slate-950">
     {slides.map((slide, index) => (
       <div class:list={["banner-three-slide absolute inset-0", index === 0 && "is-active"]} data-hero-slide={index}>
         <OptimizedImage
           src={slide.image}
-          alt="Construction project site"
+          alt="Construction project"
           loading={index === 0 ? "eager" : "lazy"}
           fetchpriority={index === 0 ? "high" : undefined}
           class="h-full w-full object-cover object-center"
         />
-        <div class="absolute inset-0 bg-slate-950/45"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/52 to-slate-950/22"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-slate-950/15"></div>
+        <div class="absolute inset-0 bg-slate-950/20"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950/72 via-slate-950/28 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/36 via-transparent to-transparent"></div>
       </div>
     ))}
   </div>
 
-  <div class="container relative z-10 flex min-h-[620px] items-center py-20 max-lg:min-h-[600px] max-lg:py-16 md:py-24">
-    <div class="max-w-3xl text-left">
-      <div class="banner-three-copy relative min-h-[380px] md:min-h-[350px]">
+  <div class="container relative z-10 flex min-h-[600px] items-center py-20 md:min-h-[640px] md:py-24">
+    <div class="w-full max-w-2xl text-left">
+      <div class="banner-three-copy relative min-h-[270px] md:min-h-[300px]">
         {slides.map((slide, index) => (
           <div class:list={["banner-three-copy-slide absolute inset-0 flex flex-col justify-center", index === 0 && "is-active"]} data-hero-copy={index}>
-            <div class="text-primary inline-flex min-h-5 items-center gap-3 text-[11px] font-bold tracking-[0.22em] uppercase md:text-xs">
-              <span class="h-px w-10 shrink-0 bg-primary"></span>
-              <span>{slide.eyebrow}</span>
-            </div>
-            <h1 class="mt-5 min-h-[2.15em] max-w-3xl text-display-5 leading-[1.04] font-semibold tracking-tight text-white md:text-display-4 lg:text-display-3 xl:text-display-2">{slide.title}</h1>
-            <p class="mt-5 min-h-[5.25rem] max-w-2xl text-base leading-7 text-white/90 md:text-lg md:leading-8">{slide.description}</p>
+            <h1 class="banner-three-title max-w-xl text-4xl leading-[1.08] font-semibold tracking-tight text-white sm:text-5xl md:text-6xl">{slide.title}</h1>
+            <p class="banner-three-description mt-5 max-w-xl text-base leading-7 text-white/88 md:text-lg md:leading-8">{slide.description}</p>
             {buttons?.length && (
-              <div class="banner-three-actions mt-8 flex min-h-12 flex-wrap items-center justify-start gap-3 md:mt-10 md:gap-4">
+              <div class="banner-three-actions mt-7 flex flex-wrap items-center justify-start gap-3 md:mt-8">
                 {buttons.map((button) => <Button {...button} />)}
               </div>
             )}
@@ -83,19 +76,18 @@ const jsonSlides = JSON.stringify(slides);
         ))}
       </div>
 
-      <div class="mt-5 flex items-center gap-4 md:mt-7">
+      <div class="mt-6 flex items-center gap-3 md:mt-7">
         <div class="flex items-center gap-2" aria-label="Hero slides">
           {slides.map((_, index) => (
             <button
               type="button"
-              class:list={["banner-three-dot h-1.5 w-8 rounded-full bg-white/35 transition-all duration-500 md:w-10", index === 0 && "is-active"]}
+              class:list={["banner-three-dot h-1.5 w-7 rounded-full bg-white/35 transition-all duration-500", index === 0 && "is-active"]}
               data-hero-dot={index}
               aria-label={`Show slide ${index + 1}`}
               aria-pressed={index === 0 ? "true" : "false"}
             ></button>
           ))}
         </div>
-        <span class="banner-three-counter text-[10px] font-bold tracking-[0.22em] text-white/55 uppercase">01 / 03</span>
       </div>
     </div>
   </div>
@@ -110,7 +102,6 @@ const jsonSlides = JSON.stringify(slides);
       const slides = [...section.querySelectorAll<HTMLElement>("[data-hero-slide]")];
       const copies = [...section.querySelectorAll<HTMLElement>("[data-hero-copy]")];
       const dots = [...section.querySelectorAll<HTMLButtonElement>("[data-hero-dot]")];
-      const counter = section.querySelector<HTMLElement>(".banner-three-counter");
       if (!slides.length || slides.length !== copies.length) return;
 
       let current = 0;
@@ -125,7 +116,6 @@ const jsonSlides = JSON.stringify(slides);
           dot.classList.toggle("is-active", i === current);
           dot.setAttribute("aria-pressed", i === current ? "true" : "false");
         });
-        if (counter) counter.textContent = `${String(current + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
       };
 
       const restart = () => {
@@ -160,8 +150,8 @@ const jsonSlides = JSON.stringify(slides);
 <style>
   .banner-three-slide {
     opacity: 0;
-    transform: scale(1.035);
-    transition: opacity 950ms ease, transform 7000ms cubic-bezier(.22,1,.36,1);
+    transform: scale(1.02);
+    transition: opacity 900ms ease, transform 6500ms cubic-bezier(.22,1,.36,1);
     pointer-events: none;
   }
 
@@ -172,8 +162,8 @@ const jsonSlides = JSON.stringify(slides);
 
   .banner-three-copy-slide {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 650ms ease, transform 800ms cubic-bezier(.22,1,.36,1);
+    transform: translateY(14px);
+    transition: opacity 500ms ease, transform 650ms cubic-bezier(.22,1,.36,1);
     pointer-events: none;
   }
 
@@ -184,27 +174,26 @@ const jsonSlides = JSON.stringify(slides);
   }
 
   .banner-three-dot.is-active {
-    width: 3rem;
+    width: 2.25rem;
     background: var(--color-primary, currentColor);
     opacity: 1;
   }
 
   @media (max-width: 767px) {
     .banner-three-copy {
-      min-height: 405px;
+      min-height: 315px;
     }
 
     .banner-three-copy-slide {
-      justify-content: flex-start;
-      padding-top: 2rem;
+      justify-content: center;
     }
 
     .banner-three-slide {
-      transform: scale(1.02);
+      transform: scale(1.015);
     }
 
-    .banner-three-dot.is-active {
-      width: 2.25rem;
+    .banner-three-title {
+      max-width: 22rem;
     }
   }
 
