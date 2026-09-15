@@ -5,7 +5,6 @@ import Footer from "@/components/global/Footer.astro";
 import removeEmptyKeys from "@/lib/utils/removeEmptyKeys";
 import Header from "@/components/global/header/Header.astro";
 import type { JSONLDProps } from "@/lib/utils/JsonLdGenerator";
-import HelperButtons from "@/components/utilities/HelperButtons.astro";
 import CursorFollower from "@/components/utilities/CursorFollower.astro";
 import BackToTop from "@/components/utilities/BackToTop.astro";
 import BreakpointIndicator from "@/components/widgets/BreakpointIndicator.astro";
@@ -19,6 +18,7 @@ type HeaderPosition = "fixed" | "static" | "sticky";
 
 interface Props extends JSONLDProps {
   className?: string;
+  structuredData?: Props;
   fitToScreen?: boolean;
   ctaSpacingTop?: boolean;
   footerSpaceTop?: boolean;
@@ -36,10 +36,8 @@ interface Props extends JSONLDProps {
   canonical?: string;
   keywords?: string[];
   disableTagline?: boolean;
-  structuredData?: Props;
 }
 
-// destructure frontmatter
 let {
   className,
   structuredData,
@@ -50,10 +48,8 @@ let {
   fitToScreen = true,
 } = Astro.props;
 
-// Exclude empty key value weather it may empty string, object or array from Astro.props
 let props = removeEmptyKeys(Astro.props);
 
-// Conditionally add min-h-[102vh] class to prevent FOUC (flash of unstyled content) while fast navigation
 className = fitToScreen
   ? (className ? className + " " : "") + "fit-to-screen"
   : className;
@@ -82,7 +78,6 @@ className = fitToScreen
     <GlobalScripts />
     <CursorFollower />
     <BackToTop />
-    <HelperButtons />
     <BreakpointIndicator />
   </body>
 </html>
