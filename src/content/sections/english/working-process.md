@@ -1,15 +1,14 @@
 ---
 enable: true
-title: "Our working process on how<br />to grow your business"
-# Images should remain lightweight transparent illustrations for the process step layout.
+title: "Our construction process, from plan<br />to handover"
 list:
-  - title: "Initiation & Planning"
-    description: "We clarify goals, risks, users, timelines, and the technical path forward."
+  - title: "Consultation & Planning"
+    description: "We understand your project, discuss your needs, review the scope, and prepare a clear plan for the work."
     image: "/images/process/step-01.png"
-  - title: "Execution & Development"
-    description: "We design, build, integrate, and review each milestone with your team."
+  - title: "Site Preparation"
+    description: "We prepare the site, organize materials, coordinate the work, and put the right safety measures in place."
     image: "/images/process/step-02.png"
-  - title: "Testing & Maintenance"
-    description: "We validate performance, fix issues, document systems, and support launch."
+  - title: "Construction & Handover"
+    description: "We carry out the construction, inspect the completed work, handle finishing details, and prepare the project for handover."
     image: "/images/process/step-03.png"
 ---
